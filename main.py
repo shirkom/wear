@@ -5,12 +5,6 @@ import what_should_wear_file
 app = FastAPI(title='What should wear today?')
 
 
-@app.get("/ip")
-def read_root(request: Request):
-    client_host = request.client.host
-    return {"client_ip": client_host}
-
-
 @app.get("/wear/{lat}/{lon}")
 def wear(lat: str, lon: str):
     temp_celsuis, weather_description, wear_res = what_should_wear_file.what_should_wear(lat, lon)
